@@ -1,0 +1,79 @@
+<h1>PDF 결제 테스트</h1>
+<%= link_to "게시글 목록으로 이동", posts_path, class: "btn-primary" %>
+<p>아래 버튼을 눌러 1,000원짜리 PDF 파일 결제를 테스트합니다.</p>
+
+<!-- 결제 UI가 표시될 영역 -->
+<div id="payment-widget" style="width: 100%;"></div>
+
+<!-- 결제 버튼 -->
+<button id="payment-button" type="button">1,000원 PDF 결제하기</button>
+
+<script type="text/javascript">
+  // TODO: 이 값은 실제로 판매하는 상품 정보에 맞게 바꾸세요.
+  const amount = 1000;
+  const orderId = "test-order-" + new Date().getTime(); // 주문 ID를 동적으로 생성
+  const orderName = "테스트 PDF";
+
+  // ------ 클라이언트 키를 여기에 넣으세요 ------
+  // TODO: 이 값은 Rails credentials에서 불러와서 동적으로 설정해야 합니다.
+  // 우선은 테스트용 클라이언트 키를 직접 입력해서 UI를 확인합니다.
+  const clientKey = "test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq"; 
+  // -----------------------------------------
+
+  const paymentWidget = PaymentWidget(clientKey, PaymentWidget.ANONYMOUS);
+
+  const paymentMethodWidget = paymentWidget.renderPaymentMethods(
+    "#payment-widget",
+    { value: amount },
+    { variantKey: "DEFAULT" }
+  );
+
+  const agreementWidget = paymentWidget.renderAgreement(
+    '#agreement',
+    { variantKey: 'DEFAULT' }
+  );
+
+  const paymentButton = document.getElementById("payment-button");
+
+  paymentButton.addEventListener("click", function () {
+    // TODO: 현재는 백엔드 설정 문제로 이 부분은 주석 처리합니다.
+    // 나중에 백엔드 구현이 완료되면, 이 fetch 요청을 통해 서버에 결제를 요청하고
+    // 반환된 paymentKey로 requestPayment를 호출해야 합니다.
+    /*
+    fetch("/payment/create", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content
+      },
+      body: JSON.stringify({
+        amount: amount,
+        orderId: orderId,
+        orderName: orderName,
+      }),
+    }).then(response => response.json())
+    .then(data => {
+      // 서버에서 받은 paymentKey로 결제 요청
+      paymentWidget.requestPayment({
+        orderId: data.orderId,
+        orderName: data.orderName,
+        successUrl: window.location.origin + "/payment/success",
+        failUrl: window.location.origin + "/payment/fail",
+        customerEmail: "test@example.com",
+        customerName: "테스트"
+      });
+    });
+    */
+
+    // 임시: 백엔드 구현 전까지 UI 테스트를 위해 바로 requestPayment를 호출합니다.
+    // 실제 서비스에서는 절대 이렇게 사용하면 안 됩니다.
+    paymentWidget.requestPayment({
+      orderId: orderId,
+      orderName: orderName,
+      successUrl: window.location.origin + "/payment/success",
+      failUrl: window.location.origin + "/payment/fail",
+      customerEmail: "test@example.com",
+      customerName: "테스트"
+    });
+  });
+</script>
