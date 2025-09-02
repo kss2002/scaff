@@ -1,6 +1,9 @@
 # test/controllers/home_controller_test.rb
 require "test_helper"
 
+# bash
+# bin/rubocop -A
+
 # CI modify
 class HomeControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
