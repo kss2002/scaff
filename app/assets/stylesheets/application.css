@@ -1,9 +1,3 @@
-.btn-primary {
-  padding: 8px;
-  border: 2px solid #ccc;
-  border-radius: 8px;
-  text-decoration: none;
-  display: inline-block;
-  margin-bottom: 20px;
-  color: black;
-}
+@import 'views/layouts.css';
+@import 'views/home.css';
+@import 'views/posts.css';
