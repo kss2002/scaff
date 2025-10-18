@@ -1,4 +1,4 @@
-<div class="container">
+<div>
   <h1>PDF 결제 테스트</h1>
   <%= link_to "게시글 목록으로 이동", posts_path, class: "btn-primary" %>
   <p>아래 버튼을 눌러 1,000원짜리 PDF 파일 결제를 테스트합니다.</p>
@@ -7,10 +7,13 @@
   <div id="payment-widget" style="width: 100%;"></div>
 
   <!-- 결제 버튼 -->
-  <button id="payment-button" type="button">
-    <%= image_tag "Toss_Symbol_Primary.png", alt: "Toss Payments Logo", size: "24x24" %>
+  <div class="flex">
+    <button id="payment-button" type="button">
     <span>1,000원 PDF 결제하기</span>
-  </button>
+  </button>    
+  <%= image_tag "Toss_Symbol_Primary.png", alt: "Toss Payments Logo", size: "24x24" %>
+  </div>
+  
 </div>
 
 <script type="text/javascript">
