@@ -1,21 +1,21 @@
 <div>
   <h1>PDF 결제 테스트</h1>
   <%= link_to "게시글 목록으로 이동", posts_path, class: "btn-primary" %>
+  <div>
+    <p>prettier 테스팅 중입니다.</p>
+    <p> 여러 번 탭치기</p>
+  </div>
   <p>아래 버튼을 눌러 1,000원짜리 PDF 파일 결제를 테스트합니다.</p>
-
   <!-- 결제 UI가 표시될 영역 -->
   <div id="payment-widget" style="width: 100%;"></div>
-
   <!-- 결제 버튼 -->
   <div class="flex">
     <button id="payment-button" type="button">
-    <span>1,000원 PDF 결제하기</span>
-  </button>    
-  <%= image_tag "Toss_Symbol_Primary.png", alt: "Toss Payments Logo", size: "24x24" %>
+      <span>1,000원 PDF 결제하기</span>
+    </button>
+    <%= image_tag "Toss_Symbol_Primary.png", alt: "Toss Payments Logo", size: "24x24" %>
   </div>
-  
 </div>
-
 <script type="text/javascript">
   // TODO: 이 값은 실제로 판매하는 상품 정보에 맞게 바꾸세요.
   const amount = 1000;
@@ -25,7 +25,7 @@
   // ------ 클라이언트 키를 여기에 넣으세요 ------
   // TODO: 이 값은 Rails credentials에서 불러와서 동적으로 설정해야 합니다.
   // 우선은 테스트용 클라이언트 키를 직접 입력해서 UI를 확인합니다.
-  const clientKey = "test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq"; 
+  const clientKey = "test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq";
   // -----------------------------------------
 
   const paymentWidget = PaymentWidget(clientKey, PaymentWidget.ANONYMOUS);
