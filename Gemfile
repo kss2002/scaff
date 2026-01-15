@@ -64,4 +64,4 @@ end
 
 gem "toss_payments", "~> 0.6.5"
 
-gem "httparty", "~> 0.24.0"
+gem "httparty", "~> 0.24.2"
