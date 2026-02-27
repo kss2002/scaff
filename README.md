@@ -1,12 +1,18 @@
 # README
 
-## hello mac
-
 ## scaffold
 
 ```bash
 rails generate scaffold Post title:string content:text
 ```
+
+### Run local server
+
+```bash
+./bin/dev
+```
+
+http://127.0.0.1:3000/
 
 ## 전역 ERB 포멧팅 - prettier
 
